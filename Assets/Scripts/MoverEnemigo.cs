@@ -25,4 +25,8 @@ public class MoverEnemigo : MonoBehaviour
             velocidad++;
         }
     }
+    public void IniciarEnemigo()
+    {
+
+    }
 }
