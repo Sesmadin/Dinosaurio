@@ -27,6 +27,7 @@ public class MoverEnemigo : MonoBehaviour
     }
     public void IniciarEnemigo()
     {
-
+        transform.position = posicionInicial;
+        velocidad = 3;
     }
 }
