@@ -1,15 +1,16 @@
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public int puntuacionActual, puntuacionMaxima;
+    [SerializeField] float tiempo;
     [SerializeField] GameObject gameOver, resetea, jugador, enemigo;
     [SerializeField] bool contar = true;
-    [SerializeField] public float tiempo = 0;
     [SerializeField] int puntuacion;
     [SerializeField] MoverEnemigo moverenemigo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,11 @@ public class GameManager : MonoBehaviour
     {
         if (contar == true)
         {
-            
             tiempo += Time.deltaTime;
         }
     }
-    void Perder()
+
+    public void Perder()
     {
         jugador.SetActive(false);
         enemigo.SetActive(false);
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         resetea.SetActive(true);
         contar = false;
     }
+
     public void ReiniciarJuego()
     {
         puntuacion = 0;
@@ -45,4 +47,17 @@ public class GameManager : MonoBehaviour
         contar = true;
         moverenemigo.IniciarEnemigo();
     }
+
+    //Cada vez que se llama a este método suma la puntuación en +1
+    public void ActualizarPuntuación()
+    {
+        puntuacionActual = +1;
+
+        if (puntuacionActual == puntuacionMaxima)
+        {
+            puntuacionActual = puntuacionMaxima;
+        }
+    }
+
+
 }
