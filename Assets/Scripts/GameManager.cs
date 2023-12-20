@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public int puntuacionActual, puntuacionMaxima;
-    [SerializeField] float tiempo;
-    [SerializeField] GameObject gameOver, resetea, jugador, enemigo;
+    [SerializeField] public float tiempo;
+    [SerializeField] GameObject gameOver, resetea, jugador, enemigo, enemigo2;
     [SerializeField] bool contar = true;
     [SerializeField] int puntuacion;
     [SerializeField] MoverEnemigo moverenemigo;
-
+    public static GameManager Instancia;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +56,18 @@ public class GameManager : MonoBehaviour
         if (puntuacionActual == puntuacionMaxima)
         {
             puntuacionActual = puntuacionMaxima;
+        }
+    }
+    private void Awake()
+    {
+        if (Instancia == null)
+        {
+            Instancia = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
