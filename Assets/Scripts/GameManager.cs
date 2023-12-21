@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float tiempo;
     [SerializeField] GameObject gameOver, resetea, jugador, enemigo, enemigo2;
     [SerializeField] bool contar = true;
-    [SerializeField] int puntuacion;
     [SerializeField] MoverEnemigo moverenemigo;
     public static GameManager Instancia;
     // Start is called before the first frame update
@@ -16,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(false);
         resetea.SetActive(false);
+        puntuacionMaxima = PlayerPrefs.GetInt("MejorPuntuacion");
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void ReiniciarJuego()
     {
-        puntuacion = 0;
+        puntuacionActual = 0;
         jugador.SetActive(true);
         enemigo.SetActive(true);
         gameOver.SetActive(false);
@@ -49,15 +49,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Cada vez que se llama a este método suma la puntuación en +1
-    public void ActualizarPuntuación()
-    {
-        puntuacionActual = +1;
 
-        if (puntuacionActual == puntuacionMaxima)
-        {
-            puntuacionActual = puntuacionMaxima;
-        }
-    }
     private void Awake()
     {
         if (Instancia == null)
@@ -71,5 +63,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SumarPunto()
+    {
 
+        puntuacionActual += 1;
+        if (puntuacionActual >= puntuacionMaxima)
+        {
+            puntuacionMaxima = puntuacionActual;
+            PlayerPrefs.SetInt("MejorPuntuacion", puntuacionMaxima);
+        }
+    }
+
+    public void actualizarPuntos()
+    {
+        puntuacionMaxima = PlayerPrefs.GetInt("MejorPuntuacion");
+    }
 }

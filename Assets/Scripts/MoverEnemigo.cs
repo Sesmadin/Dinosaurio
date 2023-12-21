@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoverEnemigo : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
     [SerializeField] Camera camara;
     [SerializeField] Vector2 posicionInicial, posicionMinima;
     [SerializeField] float velocidad;
@@ -24,10 +25,21 @@ public class MoverEnemigo : MonoBehaviour
             transform.position = posicionInicial;
             velocidad++;
         }
+
     }
     public void IniciarEnemigo()
     {
         transform.position = posicionInicial;
         velocidad = 3;
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.transform.tag == "Sumador")
+        {
+            gameManager.SumarPunto();
+        }
+    }
+
 }
+
