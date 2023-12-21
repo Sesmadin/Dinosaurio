@@ -30,7 +30,7 @@ public class MoverEnemigo : MonoBehaviour
     public void IniciarEnemigo()
     {
         transform.position = posicionInicial;
-        velocidad = 3;
+        velocidad = 4;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

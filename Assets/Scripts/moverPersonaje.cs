@@ -9,13 +9,15 @@ public class moverPersonaje : MonoBehaviour
     [SerializeField] float Movimiento;
     [SerializeField] float velocidad;
     [SerializeField] Animator animator;
-
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] sonidos;
 
     // Update is called once per frame
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -28,11 +30,8 @@ public class moverPersonaje : MonoBehaviour
         {
             rigidbody.AddForce(Vector2.up * velocidad);
             animator.SetBool("TocarSuelo", false);
-        }
-
-        if (Input.GetButtonDown("Down"))
-        {
-            animator.SetBool("Agachaaa", true);
+            audioSource.clip = sonidos[0];
+            audioSource.Play();
         }
     }
 
