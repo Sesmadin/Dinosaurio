@@ -16,12 +16,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //puntuacionActual.text = GameManager.Instancia.puntuacionActual.ToString();
-        //mejorPuntuacion.text = GameManager.Instancia.mejorPuntuacion.ToString();
+        puntuacionActual.text = GameManager.Instancia.puntuacionActual.ToString();
+        mejorPuntuacion.text = GameManager.Instancia.puntuacionMaxima.ToString();
 
-        //int minutos = (int)GameManager.Instancia.tiempo / 60;
-        //int segundos = (int)GameManager.Instancia.tiempo % 60;
-        //string textotiempo = $"{minutos:D2}:{segundos:D2}";
-        //texto.text = textotiempo;
+        int minutos = (int)GameManager.Instancia.tiempo / 60;
+        int segundos = (int)GameManager.Instancia.tiempo % 60;
+        string textotiempo = $"{minutos:D2}:{segundos:D2}";
+        texto.text = textotiempo;
     }
 }
