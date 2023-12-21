@@ -33,6 +33,16 @@ public class moverPersonaje : MonoBehaviour
             audioSource.clip = sonidos[0];
             audioSource.Play();
         }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            animator.SetBool("Agachaaa", true);
+            gameObject.
+        }
+        else
+        {
+            animator.SetBool("Agachaaa", false);
+            animator.SetBool("TocarSuelo", true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
